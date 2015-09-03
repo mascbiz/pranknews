@@ -1,0 +1,31 @@
+<div class="url-creator-inner">
+
+  <form class="url-inputs">
+    <section class="title-info">
+      {{input type="text" value=model.headline placeholder="Rick rolling sees sudden surge in popularity"}}
+
+      {{#x-select value=model.category}}
+        {{#each categories as |category|}}
+          {{#x-option value=category}}{{category}}{{/x-option}}
+        {{/each}}
+      {{/x-select}}
+    </section>
+
+    {{video-selector model=model selected=model.video}}
+  </form>
+
+  <div class="separator">
+    <svg viewBox="0 0 671 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+        <g >
+            <g id="LaTlmes" sketch:type="MSArtboardGroup" transform="translate(-383.000000, -593.000000)" fill="transparent" stroke="#393939">
+                <path d="M383.503906,593.5625 L697.29114,593.5625 L715.764238,608.5625 L734.237335,593.5625 L1053.73381,593.5625" id="Path-34" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </svg>
+  </div>
+
+  <div class="copy-action">
+    {{zero-clipboard text=model.url label="COPY URL" innerClass="btn btn-default" class="copy-button"}}
+    <div class="url-result"><a href="{{ model.url }}">{{ model.url }}</a></div>
+  </div>
+</div>

@@ -40,8 +40,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    if (ENV['ember-cli-mirage']) {
+      ENV['ember-cli-mirage'].enabled = true;
+    }
   }
-
   return ENV;
 };

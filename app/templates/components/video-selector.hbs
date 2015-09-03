@@ -1,0 +1,9 @@
+{{#each model.options as |video|}}
+  {{#radio-button value=video.id groupValue=model.video name=video.ytid}}
+    <div class="video-still" style="background-image:url(assets/images/{{video.imageName}})">
+      <div class="info">
+          {{video.name}}
+      </div>
+    </div>
+  {{/radio-button}}
+{{/each}}

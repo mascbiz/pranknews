@@ -6,6 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('article', {path: "/"})
+  this.route('video', {path: "/:category/:title"});
 });
 
 export default Router;

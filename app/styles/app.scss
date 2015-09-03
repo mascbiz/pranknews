@@ -1,0 +1,206 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+@import "bourbon";
+@import "neat/neat";
+@import "base/base";
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+html {
+  padding:0;
+  margin:0;
+}
+
+body {
+  padding:0;
+  margin:0;
+  background-color: #1F1F1F;
+}
+.page-content {
+  background-color:$base-background-color;
+  padding: 0 0 40px 0;
+  margin: auto auto;
+}
+
+.page-inner {
+  max-width:800px;
+  margin: auto auto;
+}
+
+header {
+  h1 {
+    min-height:120px;
+    background: transparent url(/assets/images/logo-header-no-slogan.png) no-repeat center 20px;
+    background-size:400px auto;
+    text-indent: -9000px;
+  }
+
+  padding:30px;
+  text-align:center;
+
+  h2 {
+    margin-top:-15px;
+    font-size:20px;
+    font-family:"Open Sans";
+    font-weight:bold;
+    text-transform:uppercase;
+    color:$action-color;
+  }
+}
+
+header.small {
+  h1 {
+    background-size:200px auto;
+    min-height:80px;
+  }
+}
+
+footer {
+  padding:100px 0 50px 0;
+  background-color:#1F1F1F;
+  text-align:center;
+  p {
+    color:#626262;
+  }
+}
+
+.url-creator {
+  max-width:90%;
+  margin:auto auto;
+  border: 2px solid #2F2F2F;
+  padding:10px;
+  position:relative;
+
+  .title-info {
+      @include outer-container;
+
+      select {
+        @include span-columns(4);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border:0;
+        margin:0;
+        height:35px;
+      }
+      input {
+        @include span-columns(8);
+      }
+
+  }
+  .url-creator-inner {
+      padding:50px;
+      border:5px solid #2F2F2F;
+  }
+
+  form {
+    margin:0 0 20px 0;
+  }
+
+  .copy-action {
+    position:relative;
+
+
+    .copy-button {
+      position:absolute;
+      right:0;
+      top:0;
+      bottom:0;
+
+      z-index:2;
+
+      button {
+        position:absolute;
+        top:0; right:0; bottom:0;
+      }
+    }
+    .copy-button.zeroclipboard-is-hover {
+      cursor: pointer!important;
+
+      button {
+        background-color:darken($action-color, 20%);
+      }
+    }
+
+    .url-result {
+      background-color: #1F1F1F;
+      padding: 3px 110px 3px 18px;
+
+      font-size: 15px;
+      line-height: 44px;
+      position:relative;
+    }
+
+    .copy-button.zeroclipboard-is-hover + .url-result {
+      box-shadow:  0 0 3px $action-color;
+    }
+  }
+
+  .separator {
+    margin:20px;
+  }
+  .separator path {
+    stroke:#AAA;
+    stroke-width: 1px;
+  }
+}
+
+
+
+.video-selector {
+  margin: auto auto;
+  background-color:#1F1F1F;
+  padding:15px 0;
+  text-align:center;
+  @include outer-container;
+  label {
+    cursor: pointer;
+    margin:5px 10px;
+    @include span-columns(4);
+    width:171px;
+    display:inline-block;
+    position:relative;
+    height:120px;
+    border-radius:5px;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    box-sizing: border-box;
+    border:3px solid #000;
+
+    &.checked {
+      border:3px solid $action-color;
+    }
+
+    .video-still {
+        position:absolute;
+        left:3px;right:3px;bottom:3px;top:3px;
+        background-size: cover;
+        background-repeat:no-repeat;
+    }
+
+    .info {display:none;}
+
+  }
+  input {
+    display:none;
+  }
+}
+
+.video-player {
+  @include aspect-ratio(16, 9);
+  width:100%;
+}
