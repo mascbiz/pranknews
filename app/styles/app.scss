@@ -18,6 +18,10 @@ body {
 
 a {
   text-decoration:underline;
+  color: #FFF;
+  &:hover {
+    color: $action-color;
+  }
 }
 
 .page-content {
@@ -43,7 +47,7 @@ header {
 
     @include media($medium-screen-up) {
       min-height:160px;
-      background-size:400px auto;
+      background-size:460px auto;
     }
   }
   h2 {
@@ -85,7 +89,7 @@ footer {
   max-width:100%;
   margin:auto auto;
   border: 2px solid #2F2F2F;
-  padding:10px;
+  padding:6px;
   position:relative;
 
   @include media($medium-screen-up) {
@@ -96,10 +100,15 @@ footer {
       @include outer-container;
 
       select {
+        @include background-clip();
         @include span-columns(12);
 
         @include media($medium-screen-up) {
           @include span-columns(3);
+        }
+
+        &:active, &:hover, &:focus {
+          outline: none;
         }
 
         -webkit-border-radius: 5px;
@@ -110,6 +119,7 @@ footer {
         height:39px;
       }
       input {
+        @include background-clip();
         @include span-columns(12);
 
         @include media($medium-screen-up) {
@@ -132,11 +142,11 @@ footer {
   }
 
   .separator {
-    margin:20px;
+    margin:20px -25px;
   }
   .separator path {
     stroke: #2F2F2F;
-    stroke-width: 1px;
+    stroke-width: 2px;
   }
 }
 
@@ -166,6 +176,7 @@ footer {
 
 
       button {
+        color:$dark-gray;
         position:absolute;
         top:0; right:0; bottom:0;
       }
@@ -175,18 +186,9 @@ footer {
     cursor: pointer!important;
 
     button {
-      background-color:darken($action-color, 20%);
+      color:$dark-gray;
+      background-color:lighten($action-color, 5%);
     }
-  }
-
-  .copy-button.zeroclipboard-is-hover:active {
-    button {
-      background-color:darken($action-color, 40%);
-    }
-  }
-
-  .copy-button button:active {
-    background-color:darken($action-color, 40%);
   }
 
   .url-result {
@@ -242,6 +244,8 @@ label.field-label[for=category] {
   label.field-label {
     margin-top:-10px;
   }
+  border-radius: 2px;
+  @include background-clip();
 
   margin: auto auto;
   background-color:#1F1F1F;
@@ -264,9 +268,8 @@ label.field-label[for=category] {
     -webkit-background-clip: border-box;
     background-clip: border-box;
     box-sizing: border-box;
-    border:3px solid #000;
+    border:3px solid transparent;
     position:relative;
-
 
     @include media($medium-screen-up) {
         @include span-columns(4);
