@@ -36,25 +36,31 @@ header {
   text-align:center;
 
   h1 {
-    min-height:90px;
-    background: transparent url(/assets/images/logo-header-no-slogan.png) no-repeat center 20px;
-    background-size:200px auto;
+    min-height:120px;
+    background: transparent url(/assets/images/logo-header.png) no-repeat center 20px;
+    background-size:290px auto;
     text-indent: -9000px;
 
     @include media($medium-screen-up) {
-      min-height:120px;
+      min-height:160px;
       background-size:400px auto;
     }
   }
-
-  &.small h1 {
-    background-size:200px auto;
-    min-height:80px;
+  h2 {
+    display:none;
   }
 
+  &.small h1 {
+    background-size:200px auto!important;
+    background: transparent url(/assets/images/logo-header-no-slogan.png) no-repeat center 20px;
+    min-height:80px;
+  }
+  &.small h2 {
+    display:block;
+  }
   h2 {
     margin-top:-15px;
-    font-size:20px;
+    font-size:16px;
     font-family:"Open Sans";
     font-weight:bold;
     text-transform:uppercase;
@@ -129,31 +135,17 @@ footer {
     margin:20px;
   }
   .separator path {
-    stroke:#AAA;
+    stroke: #2F2F2F;
     stroke-width: 1px;
   }
 }
-
-
-.isReady .copy-action:before {
-  display:none;
-}
-
-.copy-action:before {
-  content:"";
-  @include absolute-fill(0,0,0,0);
-  background-color:$dark-gray;
-  opacity:0.8;
-  z-index:10;
-}
-
 
 .copy-action {
   position:relative;
   @include clearfix();
   .copy-button {
+    display:none;
     @include clearfix();
-    display:block;
     width:100%;
     z-index:2;
     button {
@@ -162,6 +154,8 @@ footer {
     }
 
     @include media($medium-screen-up) {
+      display:block;
+
       position:absolute;
       right:0;
       top:0;
@@ -196,15 +190,18 @@ footer {
   }
 
   .url-result {
+    overflow:hidden;
     @include clearfix();
     background-color: #1F1F1F;
     padding: 3px 18px 3px 18px;
 
     font-size: 15px;
-    line-height: 44px;
+    line-height: 18px;
     position:relative;
     text-align:center;
     @include media($medium-screen-up) {
+      line-height: 44px;
+      white-space: nowrap;
       text-align:left;
       min-height:0;
       padding: 3px 110px 3px 18px;
@@ -295,7 +292,7 @@ label.field-label[for=category] {
           color: #FFF;
           font-size:25px;
           font-weight:bold;
-          text-shadow: 0 0 5px $dark-gray;
+          // text-shadow: 0 0 5px $dark-gray;
           box-sizing: border-box;
           @include vertical-align();
           position:absolute;
@@ -305,7 +302,7 @@ label.field-label[for=category] {
 
     &.checked .video-still .info {
       color: #FFF;
-      text-shadow:0 0 10px $action-color, 1px 1px 10px #333;
+      // text-shadow:0 0 10px $action-color, 1px 1px 10px #333;
     }
   }
   input {
@@ -336,7 +333,7 @@ label.field-label[for=category] {
     @include span-columns(12);
     padding:10px 0;
     @include media($medium-screen-up) {
-      line-height:25px;
+      line-height:22px;
       @include span-columns(8);
 
       padding:20px 0;
@@ -356,6 +353,8 @@ label.field-label[for=category] {
       text-transform: uppercase;
     }
     @include media($medium-screen-up) {
+      position:relative;
+      top:3px;
       @include span-columns(4);
       padding:20px 0;
     }
