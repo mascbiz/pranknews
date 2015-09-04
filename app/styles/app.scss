@@ -319,16 +319,45 @@ label.field-label[for=category] {
 }
 
 .lets-talk-about-this {
-  margin: 40px 0;
+  margin: 40px auto;
+  width:75%;
   @include outer-container;
 
+  @include media($medium-screen-up) {
+    margin: 90px auto;
+  }
+
+  h3 {
+    text-align:center;
+    line-height: 25px;
+  }
+
   .words {
-    padding:40px;
-    @include span-columns(8);
+    @include span-columns(12);
+    padding:10px 0;
+    @include media($medium-screen-up) {
+      line-height:25px;
+      @include span-columns(8);
+
+      padding:20px 0;
+    }
+
+    font-size:14px;
+    color:#AAA;
   }
 
   .actions {
-    padding:40px;
-    @include span-columns(4);
+    text-align:right;
+    @include span-columns(12);
+    a {
+      display:block;
+      text-align:center;
+      width:100%;
+      text-transform: uppercase;
+    }
+    @include media($medium-screen-up) {
+      @include span-columns(4);
+      padding:20px 0;
+    }
   }
 }
