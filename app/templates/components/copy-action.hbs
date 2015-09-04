@@ -3,7 +3,7 @@
   {{#if model.ready}}
     <div class="url-result"><a href="{{ model.relativePath }}" target="_blank">{{ model.url }}</a></div>
   {{else}}
-    <div class="url-result"><a href="{{ placeholder }}" target="_blank">http://www.latlmes.com/{{ placeholder }}</a></div>
+    <div class="url-result"><a href="{{ placeholder }}" target="_blank">http://www.latlmes.com{{ placeholder }}</a></div>
   {{/if}}
   {{zero-clipboard text=model.url label="COPY URL" innerClass="btn btn-default" class="copy-button"}}
 
