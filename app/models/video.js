@@ -6,5 +6,8 @@ export default DS.Model.extend({
   imageName: DS.attr('string'),
   startSeconds: DS.attr('string'),
   ytid: DS.attr('string'),
-  slogan: DS.attr('string')
+  slogan: DS.attr('string'),
+  imageUrl: Ember.computed('imageName', function() {
+    return '/assets/images/video_stills/' + this.get('imageName');
+  })
 });
