@@ -8,7 +8,7 @@ export default DS.Model.extend({
     var headline = Ember.String.dasherize(this.get('headline')).replace(/[^a-zA-Z\-[0-9]\//g, '');
     var video    = "-" + this.get('video');
 
-    return [category, headline + video].join("/");
+    return [category, headline + video].join("/").replace(/[\-]+/g, '-');
   }),
   url: Ember.computed("relativePath", function() {
     return "http://www.latlmes.com/" + this.get('relativePath');
