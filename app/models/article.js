@@ -3,9 +3,17 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   headline: DS.attr('string'),
   category: DS.attr('string'),
-  url: Ember.computed('headline', 'category', 'video', function() {
-    var url = Ember.String.underscore(this.get('category')) + '/' + Ember.String.underscore(this.get('headline'));
-    return url;
+  relativePath: Ember.computed('headline', 'category', 'video', function() {
+    var category = Ember.String.dasherize(this.get('category')).replace(/[^a-zA-Z\-[0-9]\//g, '');
+    var headline = Ember.String.dasherize(this.get('headline')).replace(/[^a-zA-Z\-[0-9]\//g, '');
+    var video    = "-" + this.get('video');
+
+    return [category, headline + video].join("/");
   }),
-  video: DS.attr('string')
+  url: Ember.computed("relativePath", function() {
+    return "http://latlmes.com/" + this.get('relativePath');
+  }),
+  video: DS.attr('string'),
+  options: DS.attr('array'),
+  explanation: DS.attr('string')
 });
