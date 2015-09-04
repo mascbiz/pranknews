@@ -4,8 +4,8 @@ export default DS.Model.extend({
   headline: DS.attr('string'),
   category: DS.attr('string'),
   relativePath: Ember.computed('headline', 'category', 'video', function() {
-    var category = Ember.String.dasherize(this.get('category')).replace(/[^a-zA-Z\-[0-9]\//g, '');
-    var headline = Ember.String.dasherize(this.get('headline')).replace(/[^a-zA-Z\-[0-9]\//g, '');
+    var category = Ember.String.dasherize(this.get('category')).replace(/[^\w\s\-]/g, '');
+    var headline = Ember.String.dasherize(this.get('headline')).replace(/[^\w\s\-]/g, '');
     var video    = "-" + this.get('video');
 
     return [category, headline + video].join("/").replace(/[\-]+/g, '-');
