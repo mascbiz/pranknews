@@ -8,7 +8,7 @@ export default Ember.Route.extend({
         category: "Nation",
         video: "1",
         url: Ember.computed('headline', 'category', 'video', function() {
-          return ["http://latlmes.com", Ember.String.dasherize(this.category), Ember.String.dasherize(this.headline).replace(/[^a-zA-Z\-]/g, '') + "-" + this.video + ".html"].join("/");
+          return ["http://latlmes.com", Ember.String.dasherize(this.category), Ember.String.dasherize(this.headline).replace(/[^a-zA-Z\-]/g, '') + "-" + this.video].join("/");
         }),
         options: response
       };

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
     controller.set('model', video);
   },
   model: function(params) {
-    var videoId = params.title.match(/\-([0-9])\.html$/)[1];
+    var videoId = params.title.match(/\-([0-9])$/)[1];
     return this.store.find('video', videoId);
   }
 });
