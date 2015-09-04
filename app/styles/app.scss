@@ -16,6 +16,10 @@ body {
   background-color: $dark-gray;
 }
 
+a {
+  text-decoration:underline;
+}
+
 .page-content {
   background-color:$base-background-color;
   padding: 0 0 40px 0;
@@ -23,7 +27,7 @@ body {
 }
 
 .page-inner {
-  max-width:800px;
+  max-width:900px;
   margin: auto auto;
 }
 
@@ -59,7 +63,11 @@ header {
 }
 
 footer {
-  padding:75px  50px 0;
+  padding:40px 50px 0;
+  @include media($medium-screen-up) {
+    padding:60px  50px 0;
+  }
+
   background-color:#1F1F1F;
   text-align:center;
   p {
@@ -85,23 +93,21 @@ footer {
         @include span-columns(12);
 
         @include media($medium-screen-up) {
-          @include span-columns(4);
+          @include span-columns(3);
         }
-
-
 
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
         border:0;
         margin:0;
-        height:35px;
+        height:39px;
       }
       input {
         @include span-columns(12);
 
         @include media($medium-screen-up) {
-          @include span-columns(4);
+          @include span-columns(9);
         }
       }
 
@@ -119,44 +125,6 @@ footer {
     margin:0 0 20px 0;
   }
 
-  .copy-action {
-    position:relative;
-    .copy-button {
-      position:absolute;
-      right:0;
-      top:0;
-      bottom:0;
-      width:110px;
-
-      z-index:2;
-
-      button {
-        position:absolute;
-        top:0; right:0; bottom:0;
-      }
-    }
-    .copy-button.zeroclipboard-is-hover {
-      cursor: pointer!important;
-
-      button {
-        background-color:darken($action-color, 20%);
-      }
-    }
-
-    .url-result {
-      background-color: #1F1F1F;
-      padding: 3px 110px 3px 18px;
-
-      font-size: 15px;
-      line-height: 44px;
-      position:relative;
-    }
-
-    .copy-button.zeroclipboard-is-hover + .url-result {
-      box-shadow:  0 0 3px $action-color;
-    }
-  }
-
   .separator {
     margin:20px;
   }
@@ -167,14 +135,129 @@ footer {
 }
 
 
+.isReady .copy-action:before {
+  display:none;
+}
+
+.copy-action:before {
+  content:"";
+  @include absolute-fill(0,0,0,0);
+  background-color:$dark-gray;
+  opacity:0.8;
+  z-index:10;
+}
+
+
+.copy-action {
+  position:relative;
+  @include clearfix();
+  .copy-button {
+    @include clearfix();
+    display:block;
+    width:100%;
+    z-index:2;
+    button {
+      display:block;
+      width:100%;
+    }
+
+    @include media($medium-screen-up) {
+      position:absolute;
+      right:0;
+      top:0;
+      bottom:0;
+      left:auto;
+      height:auto;
+      width:110px;
+
+
+      button {
+        position:absolute;
+        top:0; right:0; bottom:0;
+      }
+    }
+  }
+  .copy-button.zeroclipboard-is-hover {
+    cursor: pointer!important;
+
+    button {
+      background-color:darken($action-color, 20%);
+    }
+  }
+
+  .copy-button.zeroclipboard-is-hover:active {
+    button {
+      background-color:darken($action-color, 40%);
+    }
+  }
+
+  .copy-button button:active {
+    background-color:darken($action-color, 40%);
+  }
+
+  .url-result {
+    @include clearfix();
+    background-color: #1F1F1F;
+    padding: 3px 18px 3px 18px;
+
+    font-size: 15px;
+    line-height: 44px;
+    position:relative;
+    text-align:center;
+    @include media($medium-screen-up) {
+      text-align:left;
+      min-height:0;
+      padding: 3px 110px 3px 18px;
+    }
+
+    a {
+      display:inline-block;
+    }
+
+  }
+
+  .copy-button.zeroclipboard-is-hover + .url-result {
+    box-shadow:  0 0 3px $action-color;
+  }
+}
+
+
+label.field-label {
+  text-transform:uppercase;
+  padding:5px 0;
+  display:block;
+  text-align: center;
+  font-size: 12px;
+  background-color:transparent!important;
+  margin-top:10px;
+  // @include span-columns(12);
+  color:#999;
+}
+
+label.field-label[for=category] {
+  @include media($medium-screen-up) {
+    display:none;
+  }
+}
+
 
 .video-selector {
+  label.field-label {
+    margin-top:-10px;
+  }
+
   margin: auto auto;
   background-color:#1F1F1F;
-  padding:15px 0;
+
+  padding:15px 5px;
+
+  @include media($medium-screen-up) {
+    padding:15px 30px;
+  }
+
   text-align:center;
   @include outer-container;
-  label {
+  label.ember-radio-button {
     cursor: pointer;
     @include aspect-ratio(5, 1);
     @include span-columns(12);
@@ -192,6 +275,7 @@ footer {
         @include span-columns(4);
         @include aspect-ratio(5, 3.5);
         .info {display:none;}
+        &.checked .info { display:block;}
     }
 
     &.checked {
@@ -220,11 +304,9 @@ footer {
     }
 
     &.checked .video-still .info {
-      color: $action-color;
+      color: #FFF;
+      text-shadow:0 0 10px $action-color, 1px 1px 10px #333;
     }
-
-
-
   }
   input {
     display:none;

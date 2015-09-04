@@ -1,9 +1,10 @@
 <div class="url-creator-inner">
-
   <form class="url-inputs">
     <section class="title-info">
-      {{input type="text" value=model.headline placeholder="Rick rolling sees sudden surge in popularity"}}
+      <label class="field-label" for="headline">Write A Compelling Headline</label>
+      {{input autofocus="autofocus" type="text" name="headline" value=model.headline placeholder=headlinePlaceholder}}
 
+      <label class="field-label" for="category">Category</label>
       {{#x-select value=model.category}}
         {{#each categories as |category|}}
           {{#x-option value=category}}{{category}}{{/x-option}}
@@ -24,8 +25,5 @@
     </svg>
   </div>
 
-  <div class="copy-action">
-    {{zero-clipboard text=model.url label="COPY URL" innerClass="btn btn-default" class="copy-button"}}
-    <div class="url-result"><a href="{{ model.relativePath }}">{{ model.url }}</a></div>
-  </div>
+  {{copy-action model=model placeholder=linkPlaceholder}}
 </div>

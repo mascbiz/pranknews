@@ -1,3 +1,5 @@
+<label class="field-label">Choose where this link lands</label>
+
 {{#each model.options as |video|}}
   {{#radio-button value=video.id groupValue=model.video name=video.ytid}}
     <div class="video-still" style="background-image:url({{video.imageUrl}})">

@@ -1,0 +1,12 @@
+<label class="field-label">Send This</label>
+<div class="copy-action">
+  {{#if model.ready}}
+    <div class="url-result"><a href="{{ model.relativePath }}">{{ model.url }}</a></div>
+  {{else}}
+    <div class="url-result"><a href="{{ placeholder }}">{{ placeholder }}</a></div>
+  {{/if}}
+  {{zero-clipboard text=model.url label="COPY URL" innerClass="btn btn-default" class="copy-button"}}
+
+</div>
+
+{{yield}}

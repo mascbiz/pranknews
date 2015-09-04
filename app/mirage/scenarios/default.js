@@ -25,7 +25,7 @@ export default function(server) {
 
   server.create("video", {
     id: 3,
-    name: "Epix Sax Guy",
+    name: "Epic Sax Guy",
     url: "https://www.youtube.com/embed/kxopViU98Xo?autoplay=true&iv_load_policy=3",
     startSeconds: "0",
     ytid: "kxopViU98Xo",

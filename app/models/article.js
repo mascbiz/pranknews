@@ -11,9 +11,13 @@ export default DS.Model.extend({
     return [category, headline + video].join("/");
   }),
   url: Ember.computed("relativePath", function() {
-    return "http://latlmes.com/" + this.get('relativePath');
+    if (this.get('ready')) { return "http://latlmes.com/" + this.get('relativePath'); }
+    return "http://latlmes.com/";
   }),
   video: DS.attr('string'),
   options: DS.attr('array'),
-  explanation: DS.attr('string')
+  explanation: DS.attr('string'),
+  ready: Ember.computed('headline', function() {
+    return this.get('headline').length > 0;
+  })
 });
