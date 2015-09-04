@@ -11,8 +11,7 @@ export default DS.Model.extend({
     return [category, headline + video].join("/");
   }),
   url: Ember.computed("relativePath", function() {
-    if (this.get('ready')) { return "http://latlmes.com/" + this.get('relativePath'); }
-    return "http://latlmes.com/";
+    return "http://www.latlmes.com/" + this.get('relativePath');
   }),
   video: DS.attr('string'),
   options: DS.attr('array'),
