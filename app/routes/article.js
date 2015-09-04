@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   model() {
       return this.store.createRecord('article', {
         headline: "",
-        category: "Nation",
+        category: "World",
         video: "1",
         options: this.store.findAll('video')
       });

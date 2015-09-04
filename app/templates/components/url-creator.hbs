@@ -1,10 +1,8 @@
 <div class="url-creator-inner">
   <form class="url-inputs">
     <section class="title-info">
-      <label class="field-label" for="headline">Write A Compelling Headline</label>
       {{input autofocus="autofocus" type="text" name="headline" value=model.headline placeholder=headlinePlaceholder}}
 
-      <label class="field-label" for="category">Category</label>
       {{#x-select value=model.category}}
         {{#each categories as |category|}}
           {{#x-option value=category}}{{category}}{{/x-option}}

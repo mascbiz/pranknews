@@ -26,7 +26,7 @@ a {
 
 .page-content {
   background-color:$base-background-color;
-  padding: 0 0 40px 0;
+  padding: 0 0 65px 0;
   margin: auto auto;
 }
 
@@ -36,8 +36,12 @@ a {
 }
 
 header {
-  padding:30px;
+  padding:30px 0 0;
   text-align:center;
+
+  @include media($medium-screen-up) {
+    padding:30px 0 10px;
+  }
 
   h1 {
     min-height:120px;
@@ -52,6 +56,10 @@ header {
   }
   h2 {
     display:none;
+  }
+
+  &.small {
+    padding:30px 0;
   }
 
   &.small h1 {
@@ -72,13 +80,32 @@ header {
   }
 }
 
-footer {
-  padding:40px 50px 0;
+.explanation {
+  text-align:center;
+  color: #626262;
+  max-width:420px;
+  margin: auto auto;
+  margin-bottom:40px;
+  font-weight: normal;
+  font-size:12px;
+  line-height: 18px;
+  padding: 0 20px;
   @include media($medium-screen-up) {
-    padding:60px  50px 0;
+    line-height: 22px;
+    font-size:16px;
+    padding: 0;
   }
 
-  background-color:#1F1F1F;
+}
+
+footer {
+  padding:40px 20px 20px;
+  font-size:12px;
+  @include media($medium-screen-up) {
+    padding:60px 50px 40px;
+    font-size:14px;
+  }
+
   text-align:center;
   p {
     color:#626262;
@@ -88,12 +115,13 @@ footer {
 .url-creator {
   max-width:100%;
   margin:auto auto;
-  border: 2px solid #2F2F2F;
+  border: 0;
   padding:6px;
   position:relative;
 
   @include media($medium-screen-up) {
     max-width:90%;
+    border: 2px solid #2F2F2F;
   }
 
   .title-info {
@@ -110,7 +138,8 @@ footer {
         &:active, &:hover, &:focus {
           outline: none;
         }
-
+        padding:0 15px;
+        // -webkit-appearance: none;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
@@ -130,11 +159,11 @@ footer {
   }
   .url-creator-inner {
       padding:2px;
+      border: 0;
       @include media($medium-screen-up) {
+        border:5px solid #2F2F2F;
         padding:50px;
       }
-
-      border:5px solid #2F2F2F;
   }
 
   form {
@@ -142,7 +171,7 @@ footer {
   }
 
   .separator {
-    margin:20px -25px;
+    margin:25px -25px 15px -25px;
   }
   .separator path {
     stroke: #2F2F2F;
@@ -176,7 +205,6 @@ footer {
 
 
       button {
-        color:$dark-gray;
         position:absolute;
         top:0; right:0; bottom:0;
       }
@@ -195,24 +223,32 @@ footer {
     overflow:hidden;
     @include clearfix();
     background-color: #1F1F1F;
-    padding: 3px 18px 3px 18px;
+    padding: 0;
 
     font-size: 15px;
     line-height: 18px;
     position:relative;
     text-align:center;
+
+    a {
+      display:inline-block;
+      background-color: #1F1F1F;
+      padding: 3px 18px 3px 14px;
+    }
+
+
     @include media($medium-screen-up) {
       line-height: 44px;
       white-space: nowrap;
       text-align:left;
       min-height:0;
-      padding: 3px 110px 3px 18px;
-    }
+      padding: 3px 110px 3px 14px;
 
-    a {
-      display:inline-block;
+      a {
+        display:inline-block;
+        padding:0;
+      }
     }
-
   }
 
   .copy-button.zeroclipboard-is-hover + .url-result {
@@ -226,14 +262,13 @@ label.field-label {
   padding:5px 0;
   display:block;
   text-align: center;
-  font-size: 12px;
+  font-size: 15px;
   background-color:transparent!important;
   margin-top:10px;
-  // @include span-columns(12);
-  color:#999;
+  color:$action-color;
 }
 
-label.field-label[for=category] {
+label.field-label {
   @include media($medium-screen-up) {
     display:none;
   }
@@ -247,13 +282,14 @@ label.field-label[for=category] {
   border-radius: 2px;
   @include background-clip();
 
-  margin: auto auto;
+  margin: 10px auto;
   background-color:#1F1F1F;
 
-  padding:15px 5px;
+  padding:10px;
 
   @include media($medium-screen-up) {
-    padding:15px 30px;
+    margin: auto auto;
+    padding:10px;
   }
 
   text-align:center;
@@ -319,12 +355,13 @@ label.field-label[for=category] {
 }
 
 .lets-talk-about-this {
-  margin: 40px auto;
+  border-top:1px solid #555;
+  margin: 40px auto 20px;
   width:75%;
   @include outer-container;
 
   @include media($medium-screen-up) {
-    margin: 90px auto;
+    margin: 90px auto 60px;
   }
 
   h3 {
