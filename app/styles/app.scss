@@ -139,13 +139,12 @@ footer {
           outline: none;
         }
         padding:0 15px;
+        border: 1px solid $base-border-color!important;
         // -webkit-appearance: none;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
+        border-radius:$base-border-radius;
         border:0;
         margin:0;
-        height:39px;
+        height:40px;
       }
       input {
         @include background-clip();
@@ -171,7 +170,7 @@ footer {
   }
 
   .separator {
-    margin:25px -25px 15px -25px;
+    margin:35px -25px 25px -25px;
   }
   .separator path {
     stroke: #2F2F2F;
@@ -233,7 +232,7 @@ footer {
     a {
       display:inline-block;
       background-color: #1F1F1F;
-      padding: 3px 18px 3px 14px;
+      padding: 9px 18px 13px 14px;
     }
 
 
@@ -279,7 +278,8 @@ label.field-label {
   label.field-label {
     margin-top:-10px;
   }
-  border-radius: 2px;
+  border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
   @include background-clip();
 
   margin: 10px auto;
@@ -288,7 +288,7 @@ label.field-label {
   padding:10px;
 
   @include media($medium-screen-up) {
-    margin: auto auto;
+    margin: 10px auto 0;
     padding:10px;
   }
 
@@ -306,6 +306,7 @@ label.field-label {
     box-sizing: border-box;
     border:3px solid transparent;
     position:relative;
+    margin-bottom:0;
 
     @include media($medium-screen-up) {
         @include span-columns(4);
