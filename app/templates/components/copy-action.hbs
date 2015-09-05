@@ -1,12 +1,7 @@
 <label class="field-label">Share This:</label>
 <div class="copy-action">
-  {{#if model.ready}}
-    <div class="url-result"><a href="{{ model.relativePath }}" target="_blank">{{ model.url }}</a></div>
-  {{else}}
-    <div class="url-result"><a href="{{ placeholder }}" target="_blank">http://www.latlmes.com{{ placeholder }}</a></div>
-  {{/if}}
+  <div class="url-result"><a href="{{ model.relativePath }}" target="_blank">{{ model.url }}</a></div>
   {{zero-clipboard text=model.url label="COPY URL" innerClass="btn btn-default" class="copy-button"}}
-
 </div>
 
 {{yield}}

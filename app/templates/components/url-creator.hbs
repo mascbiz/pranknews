@@ -1,7 +1,7 @@
 <div class="url-creator-inner">
   <form class="url-inputs">
     <section class="title-info">
-      {{input autofocus="autofocus" type="text" name="headline" value=model.headline placeholder=headlinePlaceholder}}
+      {{input autofocus="autofocus" type="text" name="headline" value=model.headline placeholder=model.placeholderHeadline}}
 
       {{#x-select value=model.category}}
         {{#each categories as |category|}}
