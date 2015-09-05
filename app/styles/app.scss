@@ -48,13 +48,18 @@ header {
     background: transparent url(/assets/images/logo-header.png) no-repeat center 20px;
     background-size:290px auto;
     text-indent: -9000px;
+    display:inline-block;
+    min-width:300px;
 
     @include media($medium-screen-up) {
       min-height:160px;
       background-size:460px auto;
+      min-width:470px;
+
     }
   }
   h2 {
+    display:inline-block;
     display:none;
   }
 
@@ -66,6 +71,7 @@ header {
     background-size:200px auto!important;
     background: transparent url(/assets/images/logo-header-no-slogan.png) no-repeat center 20px;
     min-height:80px;
+    min-width:230px;
   }
   &.small h2 {
     display:block;
