@@ -4,7 +4,15 @@ export default function() {
     this.timing = 0;
 
     this.get('/videos', function(db, request) {
-      return {"videos": db.videos};
+      var videos = db.videos;
+
+      if (request.queryParams.front) {
+        videos =  db.videos.filter(function(v) {
+          return (v.front.toString() == request.queryParams.front);
+        });
+      }
+
+      return {"videos": videos};
     });
 
     this.get('/videos/:id', function(db, request) {

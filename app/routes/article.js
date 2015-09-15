@@ -7,7 +7,7 @@ export default Ember.Route.extend({
         placeholderHeadline: "Your sensational news article headline",
         category: "World",
         video: "1",
-        options: this.store.findAll('video')
+        options: this.store.query('video', {front:true})
       });
   }
 });
