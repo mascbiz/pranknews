@@ -1,4 +1,4 @@
-import Mirage from 'ember-cli-mirage';
+// import Mirage from 'ember-cli-mirage';
 
 export default function() {
     this.timing = 0;
@@ -8,7 +8,7 @@ export default function() {
 
       if (request.queryParams.front) {
         videos =  db.videos.filter(function(v) {
-          return (v.front.toString() == request.queryParams.front);
+          return (v.front.toString() === request.queryParams.front);
         });
       }
 
