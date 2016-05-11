@@ -290,7 +290,7 @@ label.field-label {
 
   margin: 10px auto;
   background-color:#1F1F1F;
-
+  white-space:nowrap;
   padding:10px;
 
   @include media($medium-screen-up) {

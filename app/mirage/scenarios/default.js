@@ -10,7 +10,7 @@ export default function(server) {
     startSeconds: "0",
     ytid: "dQw4w9WgXcQ",
     imageName: "rick.jpg",
-    slogan: "You got Rick Rolled in 2015!",
+    slogan: "You got Rick Rolled in 2016!",
     front: true
   });
 
