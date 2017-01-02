@@ -2,9 +2,13 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  headline: DS.attr('string'),
-  category: DS.attr('string'),
-  placeholderHeadline: DS.attr('string'),
+  headline:             DS.attr('string'),
+  category:             DS.attr('string'),
+  placeholderHeadline:  DS.attr('string'),
+  video:                DS.attr('string'),
+  options:              DS.attr('array'),
+  explanation:          DS.attr('string'),
+  
   relativePath: Ember.computed('headline', 'placeholderHeadline', 'category', 'video', function() {
     var category = Ember.String.dasherize(this.get('category')).replace(/[^\w\s\-]/g, '');
     var headline = Ember.String.dasherize(this.get('headline') || this.get('placeholderHeadline')).replace(/[^\w\s\-]/g, '');
@@ -15,9 +19,6 @@ export default DS.Model.extend({
   url: Ember.computed("relativePath", function() {
     return "http://www.latlmes.com/" + this.get('relativePath');
   }),
-  video: DS.attr('string'),
-  options: DS.attr('array'),
-  explanation: DS.attr('string'),
   ready: Ember.computed('headline', function() {
     return this.get('headline').length > 0;
   })

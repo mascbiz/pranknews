@@ -1,3 +1,7 @@
+let today = new Date();
+let year = today.getUTCFullYear();
+
+
 export default function(server) {
 
   // Seed your development database using your factories. This
@@ -10,7 +14,7 @@ export default function(server) {
     startSeconds: "0",
     ytid: "dQw4w9WgXcQ",
     imageName: "rick.jpg",
-    slogan: "You got Rick Rolled in 2016!",
+    slogan: `You got Rick Rolled in ${year}!`,
     front: true
   });
 

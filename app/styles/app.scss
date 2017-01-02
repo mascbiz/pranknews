@@ -10,7 +10,7 @@ html {
   margin:0;
 }
 
-body {
+body:not(.ember-testing-container) {
   padding:0;
   margin:0;
   background-color: $dark-gray;

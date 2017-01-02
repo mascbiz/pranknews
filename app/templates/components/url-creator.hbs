@@ -5,7 +5,9 @@
 
       {{#x-select value=model.category}}
         {{#each categories as |category|}}
-          {{#x-option value=category}}{{category}}{{/x-option}}
+          {{#x-option value=category}}
+            {{category}}
+          {{/x-option}}
         {{/each}}
       {{/x-select}}
     </section>
