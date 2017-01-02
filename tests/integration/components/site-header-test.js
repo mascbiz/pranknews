@@ -6,21 +6,9 @@ moduleForComponent('site-header', 'Integration | Component | site header', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  this.render(hbs`{{site-header type="small" slogan="whatever it takes"}}`);
+  assert.equal(this.$('header.small').length, 1);
+  assert.equal(this.$('header h1').text().trim(), "La Tlmes");
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{site-header}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#site-header}}
-      template block text
-    {{/site-header}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('header h2').text().trim(), "whatever it takes");
 });
