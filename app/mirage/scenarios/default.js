@@ -10,9 +10,9 @@ export default function(server) {
   server.create("video", {
     id: 1,
     name: "Rick Astley",
-    url: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=true&iv_load_policy=3",
+    url: "https://www.youtube.com/embed/DLzxrzFCyOs?autoplay=true&iv_load_policy=3",
     startSeconds: "0",
-    ytid: "dQw4w9WgXcQ",
+    ytid: "DLzxrzFCyOs",
     imageName: "rick.jpg",
     slogan: `You got Rick Rolled in ${year}!`,
     front: true
