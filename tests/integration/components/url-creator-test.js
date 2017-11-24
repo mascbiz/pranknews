@@ -6,6 +6,7 @@ moduleForComponent('url-creator', 'Integration | Component | url creator', {
 });
 
 test('it renders', function(assert) {
-  this.render(hbs`{{url-creator}}`);
-  assert.equal(this.$('.title-info select option').map((i, v) => v.value).length, 15, "should have 15 options");
+  this.set('model', {});
+  this.render(hbs`{{url-creator model=model}}`);
+  assert.ok(this.$('.title-info select option').map((i, v) => v.value).length > 0, "should have options");
 });

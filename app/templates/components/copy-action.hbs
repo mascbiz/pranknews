@@ -1,7 +1,11 @@
 <label class="field-label">Share This:</label>
 <div class="copy-action">
   <div class="url-result"><a href="{{ model.relativePath }}" target="_blank">{{ model.url }}</a></div>
-  {{zero-clipboard text=model.url label="COPY URL" innerClass="btn btn-default" class="copy-button"}}
+  {{#copy-button class="btn btn-default copy-button"
+    clipboardText=model.url
+  }}
+    COPY URL
+  {{/copy-button}}
 </div>
 
 {{yield}}

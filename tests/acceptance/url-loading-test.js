@@ -33,13 +33,13 @@ test('visiting a nested url ending in -id loads correct thing', function(assert)
 
   andThen(function() {
     assert.equal(currentURL(), '/category-name/this-is-only-a-test-1');
-    assert.equal($('iframe').attr('src').match("dQw4w9WgXcQ").length, 1, "iframe should have specified id for url");
+    assert.equal(window.$('iframe').attr('src').match("dQw4w9WgXcQ").length, 1, "iframe should have specified id for url");
 
     visit('/category-name/this-is-only-a-test-3');
 
     andThen(function() {
       assert.equal(currentURL(), '/category-name/this-is-only-a-test-3');
-      assert.equal($('iframe').attr('src').match("xxx").length, 1, "iframe should have specified id for url");
+      assert.equal(window.$('iframe').attr('src').match("xxx").length, 1, "iframe should have specified id for url");
     });
   });
 });

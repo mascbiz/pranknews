@@ -1,12 +1,15 @@
-import Ember from 'ember';
+import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 
-var Router = Ember.Router.extend({
-  location: config.locationType
+const Router = EmberRouter.extend({
+  location: config.locationType,
+  rootURL: config.rootURL
 });
 
 Router.map(function() {
-  this.route('article', {path: "/"});
+  this.route('index', {path: "/"});
+  this.route('article', {path: "/articles/:category/:title"});
+
   this.route('video', {path: "/:category/:title"});
 });
 

@@ -3,11 +3,11 @@
     <section class="title-info">
       {{input autofocus="autofocus" type="text" name="headline" value=model.headline placeholder=model.placeholderHeadline}}
 
-      {{#x-select value=model.category}}
+      {{#x-select value=model.category action=(action 'updateCategory') as |xs|}}
         {{#each categories as |category|}}
-          {{#x-option value=category}}
+          {{#xs.option value=category}}
             {{category}}
-          {{/x-option}}
+          {{/xs.option}}
         {{/each}}
       {{/x-select}}
     </section>
