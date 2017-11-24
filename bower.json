@@ -1,7 +1,6 @@
 {
   "name": "latlmes",
   "dependencies": {
-    "bourbon": "4.2.6",
-    "zeroclipboard": "~2.2.0"
+    "bourbon": "4.2.6"
   }
 }
