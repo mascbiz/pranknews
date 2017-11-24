@@ -51,14 +51,6 @@ export default Ember.Route.extend({
           property: "og:image",
           content: 'http://latlmes.com/assets/images/article-share-icon.png'
         }
-      },
-      {
-        type: "meta",
-        tagId: "facebook-og-url",
-        attrs: {
-          property: "og:url",
-          content: `http://latlmes.com/${params.title}`
-        }
       }
     ];
 
