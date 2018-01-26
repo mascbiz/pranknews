@@ -9,7 +9,7 @@ export default function(server) {
   server.create("video", {
     id: 1,
     name: "Rick Astley",
-    url: "https://www.youtube.com/embed/DLzxrzFCyOs?autoplay=true&iv_load_policy=3",
+    url: "https://www.youtube.com/embed/DLzxrzFCyOs?autoplay=true&iv_load_policy=3&start=19",
     startSeconds: "0",
     ytid: "DLzxrzFCyOs",
     imageName: "rick.jpg",
