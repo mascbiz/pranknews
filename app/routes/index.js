@@ -5,7 +5,7 @@ export default Route.extend({
     return this.store.createRecord('article', {
       headline: "",
       placeholderHeadline: "Your sensational news article headline",
-      category: "World",
+      category: "Breaking",
       video: "1",
       options: this.store.query('video', {front:true})
     });

@@ -174,7 +174,10 @@ footer {
   }
 
   .separator {
-    margin:35px -25px 25px -25px;
+    margin:0 -25px 0 -25px;
+    @include media($medium-screen-up) {
+      margin:35px -25px 25px -25px;
+    }
   }
   .separator path {
     stroke: #2F2F2F;
@@ -300,8 +303,9 @@ label.field-label {
   @include outer-container;
   label.ember-radio-button {
     cursor: pointer;
-    @include aspect-ratio(5, 1);
-    @include span-columns(12);
+    @include span-columns(4);
+    @include aspect-ratio(5, 4);
+
     display:inline-block;
     position:relative;
     border-radius:5px;
@@ -334,8 +338,14 @@ label.field-label {
           vertical-align: middle;
           text-transform:uppercase;
           color: #FFF;
-          font-size:25px;
-          font-weight:bold;
+
+          display: none;
+
+          @include media($medium-screen-up) {
+            font-size:25px;
+            font-weight:bold;
+            display: block;
+          }
           // text-shadow: 0 0 5px $dark-gray;
           box-sizing: border-box;
           @include vertical-align();
