@@ -6,11 +6,19 @@
   <div class="video-selector">
     {{#each model.videos as |video|}}
       {{#radio-button value=video.id groupValue=options.selected name=video.ytid}}
-        <div class="video-still" style="background-image:url(/assets/images/video_stills/{{video.imageName}})">
-          <div class="info">
-            {{video.name}}
+        {{#if (eq video.id options.selected)}}
+          <div class="video-still active" style="background-image:url({{video.gif}})">
+            <div class="info">
+              {{video.name}}
+            </div>
           </div>
-        </div>
+        {{else}}
+          <div class="video-still" style="background-image:url(/assets/images/video_stills/{{video.imageName}})">
+            <div class="info">
+              {{video.name}}
+            </div>
+          </div>
+        {{/if}}
       {{/radio-button}}
     {{/each}}
   </div>

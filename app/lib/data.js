@@ -6,9 +6,11 @@ export default [{
       ytid: "DLzxrzFCyOs",
       imageName: "rick.jpg",
       slogan: `You got Rick Rolled in ${new Date().getUTCFullYear()}`,
+      gif: "https://media.giphy.com/media/555KPxBLSVG0TwSbct/giphy.gif",
+      gifv: "https://giphy.com/gifs/555KPxBLSVG0TwSbct/html5",
       front: true
     },
-    
+
     {
       id: 2,
       name: "Tay Zonday",
@@ -17,6 +19,8 @@ export default [{
       ytid: "EwTZ2xpQwpA",
       imageName: "tay.jpg",
       slogan: "You got Zondayed!",
+      gif: "https://media.giphy.com/media/3j0RUEFNDGGBFrLWhA/giphy.gif",
+      gifv: "https://giphy.com/gifs/3j0RUEFNDGGBFrLWhA/html5",
       front: true
     },
 
@@ -28,6 +32,8 @@ export default [{
       ytid: "kxopViU98Xo",
       imageName: "sax.jpg",
       slogan: "You got saxed!",
+      gif: "https://media.giphy.com/media/Dr2V5kBDYwQd96symP/giphy.gif",
+      gifv: "https://giphy.com/gifs/Dr2V5kBDYwQd96symP/html5",
       front: true
     },
 
