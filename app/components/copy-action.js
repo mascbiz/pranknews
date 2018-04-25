@@ -1,7 +1,7 @@
 import Component from "@ember/component";
 import { later } from "@ember/runloop";
 export default Component.extend({
-  classNameBindings:['model.ready:isReady', 'showSuccess'],
+  classNameBindings:['ready:isReady', 'showSuccess'],
 
   actions: {
     onSuccess() {

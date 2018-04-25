@@ -1,6 +1,7 @@
 import Ember from "ember";
 import { get, computed } from "@ember/object";
 import { inject } from "@ember/service";
+import data from '../lib/data';
 
 export default Ember.Route.extend({
   fastboot: inject(),
@@ -11,16 +12,13 @@ export default Ember.Route.extend({
     if (!get(this, "isFastBoot")) {
       let ytid = params.title.match(/-([0-9A-Za-z]+)$/);
       if (ytid && ytid[1] && ytid[1].length > 1) {
-        return this.store.createRecord("video", {
-          id: ytid[1],
-          name: "",
-          url: `https://www.youtube.com/embed/${ytid[1]}?autoplay=true&iv_load_policy=3`,
-          ytid: ytid[1],
-          imageName: ""
-        });
+        // THis is a youtube id
+        return {
+          url: `https://www.youtube.com/embed/${ytid[1]}?autoplay=true&iv_load_policy=3`
+        };
       } else {
         let videoId = params.title.match(/-([0-9])+$/)[1];
-        return this.store.find("video", videoId);
+        return data.filter(d => (d['id'] == videoId))[0];
       }
     }
   },

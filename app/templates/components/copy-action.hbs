@@ -1,20 +1,20 @@
 <div class="copy-action">
   {{#if (is-clipboard-supported)}}
     {{#copy-button class="btn btn-default copy-button"
-      clipboardText=model.url
+      clipboardText=url
       success=(action "onSuccess")
       error=(action "onError")
     }}
       {{#if showSuccess}}
         COPIED!
       {{else}}
-        {{model.url}}
+        {{url}}
       {{/if}}
     {{/copy-button}}
 
   {{else}}
     <div class="url-result" contentedible readonly>
-      {{ model.url }}
+      {{ url }}
     </div>
   {{/if}}
 </div>

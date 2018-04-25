@@ -1,29 +1,21 @@
 <div class="url-creator-inner">
   <form class="url-inputs">
     <section class="title-info">
-      {{input autofocus="autofocus" type="text" name="headline" value=model.headline placeholder=model.placeholderHeadline}}
+      {{input autofocus="autofocus" type="text" name="headline" value=headline placeholder="Your sensational news headline"}}
 
-      {{#x-select value=model.category action=(action 'updateCategory') as |xs|}}
-        {{#each categories as |category|}}
-          {{#xs.option value=category}}
-            {{category}}
+      {{#x-select value=category action=(action 'updateCategory') as |xs|}}
+        {{#each categories as |c|}}
+          {{#xs.option value=c}}
+            {{c}}
           {{/xs.option}}
         {{/each}}
       {{/x-select}}
     </section>
 
-    {{video-selector model=model selected=model.video}}
+    {{yield (hash selected=video)}}
   </form>
 
-  <div class="separator">
-    <svg viewBox="0 0 671 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-        <g >
-            <g id="LaTlmes" sketch:type="MSArtboardGroup" transform="translate(-383.000000, -593.000000)" fill="transparent" stroke="#393939">
-                <path d="M383.503906,593.5625 L697.29114,593.5625 L715.764238,608.5625 L734.237335,593.5625 L1053.73381,593.5625" id="Path-34" sketch:type="MSShapeGroup"></path>
-            </g>
-        </g>
-    </svg>
-  </div>
+  {{line-separator}}
 
-  {{copy-action model=model placeholder=linkPlaceholder}}
+  {{copy-action url=url ready=ready}}
 </div>

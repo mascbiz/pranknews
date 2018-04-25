@@ -8,8 +8,6 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('index', {path: "/"});
-  this.route('article', {path: "/articles/:category/:title"});
-
   this.route('video', {path: "/:category/:title"});
 });
 

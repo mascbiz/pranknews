@@ -2,6 +2,18 @@
 
 <h3 class="explanation">Write a compelling headline, select a video, and then trick your friends/enemies with the link.</h3>
 
-{{url-creator model=model}}
+{{#url-creator placeholder="Your sensational news headline" as |options|}}
+  <div class="video-selector">
+    {{#each model.videos as |video|}}
+      {{#radio-button value=video.id groupValue=options.selected name=video.ytid}}
+        <div class="video-still" style="background-image:url(/assets/images/video_stills/{{video.imageName}})">
+          <div class="info">
+            {{video.name}}
+          </div>
+        </div>
+      {{/radio-button}}
+    {{/each}}
+  </div>
+{{/url-creator}}
 
 {{outlet}}

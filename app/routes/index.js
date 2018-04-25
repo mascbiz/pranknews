@@ -1,14 +1,11 @@
 import Route from '@ember/routing/route';
+import data from '../lib/data';
 
 export default Route.extend({
   model() {
-    return this.store.createRecord('article', {
-      headline: "",
-      placeholderHeadline: "Your sensational news article headline",
-      category: "Breaking",
-      video: "1",
-      options: this.store.query('video', {front:true})
-    });
+    return {
+      videos: data.slice(0,3)
+    };
   },
 
   afterModel() {
