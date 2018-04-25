@@ -34,59 +34,60 @@ a {
   overflow: hidden;
 }
 
-header {
+.site-header {
   padding: 30px 0 0;
   text-align: center;
 
   @include media($medium-screen-up) {
     padding: 30px 0 10px;
   }
+}
 
-  h1 {
-    min-height: 80px;
-    background: transparent url(/assets/images/logo-header-no-slogan.png)
-      no-repeat center 20px;
-    background-size: 290px auto;
-    text-indent: -9000px;
-    display: inline-block;
-    min-width: 300px;
+.site-header.small {
+  padding: 30px 0;
+}
 
-    @include media($medium-screen-up) {
-      min-height: 120px;
-      background-size: 460px auto;
-      min-width: 470px;
-    }
-  }
-  h2 {
-    display: inline-block;
-    display: none;
-  }
+.site-header.small .site-header-title {
+  background-size: 200px auto !important;
+  background: transparent url(/assets/images/logo-header-no-slogan.png)
+    no-repeat center 20px;
+  min-height: 80px;
+  min-width: 230px;
+}
 
-  &.small {
-    padding: 30px 0;
-  }
+.site-header.small .site-header-slogan {
+  display: block;
+}
 
-  &.small h1 {
-    background-size: 200px auto !important;
-    background: transparent url(/assets/images/logo-header-no-slogan.png)
-      no-repeat center 20px;
-    min-height: 80px;
-    min-width: 230px;
-  }
-  &.small h2 {
-    display: block;
-  }
-  h2 {
-    margin-top: -15px;
-    font-size: 16px;
-    font-family: "Open Sans";
-    font-weight: bold;
-    text-transform: uppercase;
-    color: $action-color;
+
+.site-header-title {
+  min-height: 80px;
+  background: transparent url(/assets/images/logo-header-no-slogan.png)
+    no-repeat center 20px;
+  background-size: 290px auto;
+  text-indent: -9000px;
+  display: inline-block;
+  min-width: 300px;
+
+  @include media($medium-screen-up) {
+    min-height: 120px;
+    background-size: 460px auto;
+    min-width: 470px;
   }
 }
 
-.explanation {
+.site-header-slogan {
+  display: inline-block;
+  display: none;
+  margin-top: -15px;
+  font-size: 16px;
+  font-family: "Open Sans";
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $action-color;
+}
+
+.site-instructions {
   text-align: center;
   color: #626262;
   max-width: 420px;
@@ -103,7 +104,7 @@ header {
   }
 }
 
-footer {
+.site-footer {
   padding: 40px 20px 20px;
   font-size: 12px;
   @include media($medium-screen-up) {
@@ -129,7 +130,7 @@ footer {
     border: 2px solid #2f2f2f;
   }
 
-  .title-info {
+  .url-creator-title-info {
     @include outer-container;
 
     select {
@@ -162,6 +163,7 @@ footer {
       }
     }
   }
+
   .url-creator-inner {
     padding: 2px;
     border: 0;
@@ -171,7 +173,7 @@ footer {
     }
   }
 
-  form {
+  .url-creator-inputs {
     margin: 0 0 20px 0;
   }
 
@@ -288,7 +290,7 @@ footer {
   }
 }
 
-label.field-label {
+.field-label {
   text-transform: uppercase;
   padding: 5px 0;
   display: block;
@@ -392,7 +394,6 @@ label.field-label {
 
     &.checked .video-still .info {
       color: #fff;
-      // text-shadow:0 0 10px $action-color, 1px 1px 10px #333;
     }
   }
   input {
