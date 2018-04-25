@@ -1,11 +1,22 @@
-<label class="field-label">Share This:</label>
 <div class="copy-action">
-  <div class="url-result"><a href="{{ model.relativePath }}" target="_blank">{{ model.url }}</a></div>
-  {{#copy-button class="btn btn-default copy-button"
-    clipboardText=model.url
-  }}
-    COPY URL
-  {{/copy-button}}
+  {{#if (is-clipboard-supported)}}
+    {{#copy-button class="btn btn-default copy-button"
+      clipboardText=model.url
+      success=(action "onSuccess")
+      error=(action "onError")
+    }}
+      {{#if showSuccess}}
+        COPIED!
+      {{else}}
+        {{model.url}}
+      {{/if}}
+    {{/copy-button}}
+
+  {{else}}
+    <div class="url-result" contentedible readonly>
+      {{ model.url }}
+    </div>
+  {{/if}}
 </div>
 
 {{yield}}
