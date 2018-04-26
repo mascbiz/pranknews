@@ -1,0 +1,26 @@
+<div {{action 'triggerPlay'}} class="loading-diversion-overlay">
+  <div class="loading-message">
+    <div class="loading-progress"></div>
+  </div>
+  <button class="continue-button">
+    <span class="continue-button-interior">
+      Skip Ad
+    </span>
+  </button>
+</div>
+<div class="video-player-content">
+  <div class="video-player-overlay">
+      <iframe src="https://giphy.com/embed/{{giphyId}}" width="560" height="315" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  </div>
+
+  {{ember-youtube
+    class="video-player-embed"
+    ytid=ytid
+    playerVars=playerVars
+    delegate=this
+    delegate-as="ytPlayer"
+    playing="ytPlaying"
+  }}
+</div>
+
+{{yield}}

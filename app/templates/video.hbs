@@ -1,8 +1,6 @@
 {{site-header type="small" slogan=model.slogan}}
 
-<div class="video-player">
-  <iframe class="content" id="video" width="100%" height="100%" src="{{ model.url }}" frameborder="0" autoplay allowfullscreen></iframe>
-</div>
+{{video-player ytid=model.ytid videoUrl=model.url giphyId=model.giphyId startSeconds=model.startSeconds}}
 
 <div class="lets-talk-about-this">
   <div class="words">
