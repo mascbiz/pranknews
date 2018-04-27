@@ -1,4 +1,2 @@
 # La Tlmes
-## Bring Back The Rick Roll
-
-Pretty simple ember site made to prank your friends/enemies.
+The premiere prank url website on the internet

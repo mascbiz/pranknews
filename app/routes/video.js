@@ -1,11 +1,12 @@
-import Ember from "ember";
+import { reads } from '@ember/object/computed';
+import Route from '@ember/routing/route';
 import { get, computed } from "@ember/object";
 import { inject } from "@ember/service";
 import data from '../lib/data';
 
-export default Ember.Route.extend({
+export default Route.extend({
   fastboot: inject(),
-  isFastBoot: computed.reads("fastboot.isFastBoot"),
+  isFastBoot: reads("fastboot.isFastBoot"),
 
   model: function(params) {
     this.setHeadTags(params);

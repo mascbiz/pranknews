@@ -1,6 +1,8 @@
-import Ember from 'ember';
+import { reads } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-  fastboot: Ember.inject.service(),
-  isFastBoot: Ember.computed.reads('fastboot.isFastBoot')
+export default Route.extend({
+  fastboot: service(),
+  isFastBoot: reads('fastboot.isFastBoot')
 });
