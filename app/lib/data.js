@@ -1,4 +1,26 @@
-export default [{
+export default {
+  categories: [
+    "Arts",
+    "Autos",
+    "Breaking",
+    "Business",
+    "Culture",
+    "Entertainment",
+    "Food",
+    "Local",
+    "Movies",
+    "Music",
+    "Nation",
+    "Obituaries",
+    "Opinion",
+    "Science",
+    "Sports",
+    "Style",
+    "Tech",
+    "Travel",
+    "World"
+  ],
+  videos: [{
       id: 1,
       name: "Rick Astley",
       url: "https://www.youtube.com/embed/DLzxrzFCyOs?autoplay=true&iv_load_policy=3",
@@ -50,4 +72,4 @@ export default [{
       slogan: "You just got informed!",
       front: false
     }
-]
+]}

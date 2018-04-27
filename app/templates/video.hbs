@@ -1,6 +1,11 @@
 {{site-header type="small" slogan=model.slogan}}
 
-{{video-player ytid=model.ytid videoUrl=model.url giphyId=model.giphyId startSeconds=model.startSeconds}}
+{{#video-player ytid=model.ytid giphyId=model.giphyId startSeconds=model.startSeconds as |options|}}
+  {{#if options.useDeceptionToPlay}}
+    <div {{action options.playVideo}} class="loading-diversion-overlay">
+    </div>
+  {{/if}}
+{{/video-player}}
 
 <div class="lets-talk-about-this">
   <div class="words">

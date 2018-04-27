@@ -1,4 +1,9 @@
-<div class="copy-action">
+{{#if isFastBoot}}
+  {{! put up a fake button so we don't get a flash while the clipboard initializes}}
+  <button type="button" disabled class="btn btn-default copy-button">
+    {{url}}
+  </button>
+{{else}}
   {{#if (is-clipboard-supported)}}
     {{#copy-button class="btn btn-default copy-button"
       clipboardText=url
@@ -11,12 +16,9 @@
         {{url}}
       {{/if}}
     {{/copy-button}}
-
   {{else}}
-    <div class="url-result" contentedible readonly>
-      {{ url }}
+    <div class="copy-area">
+      <a href={{url}}>{{url}}</a>
     </div>
   {{/if}}
-</div>
-
-{{yield}}
+{{/if}}

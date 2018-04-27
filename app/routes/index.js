@@ -4,7 +4,10 @@ import data from '../lib/data';
 export default Route.extend({
   model() {
     return {
-      videos: data.slice(0,3)
+      defaultCategory: "Breaking",
+      defaultHeadline: "Your sensational news headline here",
+      categories: data.categories,
+      videos: data.videos.slice(0,3)
     };
   },
 

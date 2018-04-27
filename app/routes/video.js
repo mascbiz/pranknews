@@ -10,15 +10,17 @@ export default Ember.Route.extend({
   model: function(params) {
     this.setHeadTags(params);
     if (!get(this, "isFastBoot")) {
-      let ytid = params.title.match(/-([0-9A-Za-z]+)$/);
-      if (ytid && ytid[1] && ytid[1].length > 1) {
-        // THis is a youtube id
-        return {
-          url: `https://www.youtube.com/embed/${ytid[1]}?autoplay=true&iv_load_policy=3`
-        };
-      } else {
-        let videoId = params.title.match(/-([0-9])+$/)[1];
-        return data.filter(d => (d['id'] == videoId))[0];
+      let matches = params.title.match(/-([0-9A-Za-z]+)$/)
+      let id      = matches ? matches[1] : null;
+      let video   = data.videos.filter(d => (d['id'] == id))[0];
+      if (video) {
+        return video;
+      }
+      else if (id) {
+        return { ytid: id }; // This is a youtube id
+      }
+      else {
+        return data.videos[0];
       }
     }
   },

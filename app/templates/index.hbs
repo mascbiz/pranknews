@@ -2,26 +2,10 @@
 
 <h3 class="site-instructions">Write a compelling headline, select a video, and then trick your friends/enemies with the link.</h3>
 
-{{#url-creator placeholder="Your sensational news headline" as |options|}}
-  <div class="video-selector">
-    {{#each model.videos as |video|}}
-      {{#radio-button value=video.id groupValue=options.selected name=video.ytid}}
-        {{#if (and false (eq video.id options.selected))}}
-          <div class="video-still active" style="background-image:url({{video.gif}})">
-            <div class="info">
-              {{video.name}}
-            </div>
-          </div>
-        {{else}}
-          <div class="video-still" style="background-image:url(/assets/images/video_stills/{{video.imageName}})">
-            <div class="info">
-              {{video.name}}
-            </div>
-          </div>
-        {{/if}}
-      {{/radio-button}}
-    {{/each}}
-  </div>
-{{/url-creator}}
+{{url-creator
+  videos=model.videos
+  categories=model.categories
+  defaultHeadline=model.defaultHeadline
+  defaultCategory=model.defaultCategory}}
 
 {{outlet}}

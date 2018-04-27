@@ -53,6 +53,7 @@
     "loader.js": "^4.2.3"
   },
   "dependencies": {
+    "broccoli-concat-analyser": "^3.0.0",
     "fastboot-app-server": "^1.1.2-beta.1"
   },
   "engines": {

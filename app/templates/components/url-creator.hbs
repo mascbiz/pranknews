@@ -1,21 +1,37 @@
 <div class="url-creator-inner">
-  <form class="url-creator-inputs">
+  <form>
     <section class="url-creator-title-info">
-      {{input autofocus="autofocus" type="text" name="headline" value=headline placeholder="Your sensational news headline"}}
+      {{input autofocus="autofocus" type="text" name="headline" value=headline placeholder=defaultHeadline}}
 
-      {{#x-select value=category action=(action 'updateCategory') as |xs|}}
+      {{#x-select value=(or category defaultCategory) action=(action 'updateCategory') as |xs|}}
         {{#each categories as |c|}}
-          {{#xs.option value=c}}
-            {{c}}
-          {{/xs.option}}
+          {{#xs.option value=c}}{{c}}{{/xs.option}}
         {{/each}}
       {{/x-select}}
     </section>
 
-    {{yield (hash selected=video)}}
+    <section class="url-creator-video-selector">
+      {{#each videos as |v|}}
+        {{#radio-button value=v.id groupValue=video name=v.ytid}}
+          {{#if (and false (eq v.id options.selected))}}
+            <div class="video-still active" style="background-image:url({{video.gif}})">
+              <div class="info">
+                {{v.name}}
+              </div>
+            </div>
+          {{else}}
+            <div class="video-still" style="background-image:url(/assets/images/video_stills/{{v.imageName}})">
+              <div class="info">
+                {{v.name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/radio-button}}
+      {{/each}}
+    </section>
+
+    {{line-separator}}
+
+    {{copy-action url=(build-clickbait-url (or headline defaultHeadline) category=(or category defaultCategory) video=video)}}
   </form>
-
-  {{line-separator}}
-
-  {{copy-action url=url ready=ready}}
 </div>

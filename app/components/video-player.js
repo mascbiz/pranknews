@@ -5,7 +5,7 @@ import config from 'latlmes/config/environment';
 
 export default Component.extend({
   classNames: ['video-player'],
-  classNameBindings: ['hasPlayed', 'isMobileDevice'],
+  classNameBindings: ['hasPlayed', 'isMobileDevice', 'useDeceptionToPlay:is-deceptive'],
   playerVars: {
     autoplay: 1,
     showinfo: 0,
@@ -13,8 +13,12 @@ export default Component.extend({
     iv_load_policy: 1,
     playsinline: 1,
     modestbranding: 1,
-    rel: 0
+    rel: 0,
+    mute: 1,
   },
+
+  useDeceptionToPlay: false,
+
   isMobileDevice: computed({
     get() {
       return ('ontouchstart' in window);
@@ -30,7 +34,7 @@ export default Component.extend({
 
   didReceiveAttrs() {
     if (this.get('startSeconds')) {
-      this.set('playerVars.start', this.get('startSeconds'));
+      this.set('playerVars.start', this.get('startSeconds') || 0);
     }
   },
 
@@ -52,6 +56,7 @@ export default Component.extend({
             let nextTime = this.get('ytPlayer.player').getCurrentTime();
             if (this.get('firstTime') !== nextTime) {
               this.set('hasPlayed', true);
+              run.next(() => this.get('ytPlayer').send('unMute'));
             }
           }, 500)
         })
@@ -61,6 +66,11 @@ export default Component.extend({
         // this.get('ytPlayer').send('mute');
       }
 
-    }
+    },
+    ytEnded() {
+
+    },
+    ytBuffering() {},
+    ytPaused() {}
   }
 });
