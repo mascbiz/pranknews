@@ -1,8 +1,12 @@
 import { reads } from '@ember/object/computed';
 import Route from '@ember/routing/route';
-import { get, computed } from "@ember/object";
+import { get } from "@ember/object";
 import { inject } from "@ember/service";
 import data from '../lib/data';
+
+function isYoutubeId(id) {
+  return id && id.length === 11 && id.match(/([A-Z])/) && id.match(/[a-z]/);
+}
 
 export default Route.extend({
   fastboot: inject(),
@@ -17,7 +21,7 @@ export default Route.extend({
       if (video) {
         return video;
       }
-      else if (id) {
+      else if (isYoutubeId(id)) {
         return { ytid: id }; // This is a youtube id
       }
       else {

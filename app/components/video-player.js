@@ -5,18 +5,8 @@ import config from 'latlmes/config/environment';
 
 export default Component.extend({
   classNames: ['video-player'],
+  attributeBindings: ['ytid:data-ytid'],
   classNameBindings: ['hasPlayed', 'isMobileDevice', 'useDeceptionToPlay:is-deceptive'],
-  playerVars: {
-    autoplay: 1,
-    showinfo: 0,
-    fs: 0,
-    iv_load_policy: 1,
-    playsinline: 1,
-    modestbranding: 1,
-    rel: 0,
-    mute: 1,
-  },
-
   useDeceptionToPlay: false,
 
   isMobileDevice: computed({
@@ -25,6 +15,20 @@ export default Component.extend({
     },
     set(k, v) { return v; }
   }),
+
+  init() {
+    this._super(...arguments);
+    this.set('playerVars', {
+      autoplay: 1,
+      showinfo: 0,
+      fs: 0,
+      iv_load_policy: 1,
+      playsinline: 1,
+      modestbranding: 1,
+      rel: 0,
+      mute: 1,
+    });
+  },
 
   forceInitialPlay() {
     if (this.get('ytPlayer')) {

@@ -1,5 +1,5 @@
 // serve.js
-const FastBootAppServer = require('fastboot-app-server');
+const FastBootAppServer = require('fastboot-app-server'); //eslint-disable-line
 
 let server = new FastBootAppServer({
   distPath: 'dist',
