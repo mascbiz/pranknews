@@ -6,7 +6,7 @@
   <div class="video-selector">
     {{#each model.videos as |video|}}
       {{#radio-button value=video.id groupValue=options.selected name=video.ytid}}
-        {{#if (eq video.id options.selected)}}
+        {{#if (and false (eq video.id options.selected))}}
           <div class="video-still active" style="background-image:url({{video.gif}})">
             <div class="info">
               {{video.name}}

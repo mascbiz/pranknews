@@ -2,8 +2,10 @@ import Component from "@ember/component";
 import { set } from "@ember/object"
 import { computed } from '@ember/object';
 import { dasherize } from '@ember/string';
+import { inject } from '@ember/service';
 
 export default Component.extend({
+  fastboot: inject(),
   classNames: ["url-creator"],
   categories: [
     "Arts",
@@ -42,7 +44,9 @@ export default Component.extend({
   }),
 
   url: computed("relativePath", function() {
-    return "http://www.latlmes.com/" + this.get('relativePath');
+    if (!this.get('fastboot.isFastboot')) {
+      return `${window.location.origin}/${this.get('relativePath')}`;
+    }
   }),
 
   ready: computed('headline', function() {
