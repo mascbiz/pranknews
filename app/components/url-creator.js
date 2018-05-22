@@ -7,7 +7,7 @@ export default Component.extend({
 
   actions: {
     updateCategory(category) {
-      set(this, "category", category)
+      set(this, "category", category);
     }
   }
 });

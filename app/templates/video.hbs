@@ -1,11 +1,14 @@
-{{site-header type="small" slogan=model.slogan}}
-
-{{#video-player ytid=model.ytid giphyId=model.giphyId startSeconds=model.startSeconds as |options|}}
+{{site-header type="small"}}
+{{#video-player ytid=model.ytid giphyId=model.giphyId startSeconds=model.startSeconds onPlay=(action (mut videoHasPlayed)) as |options|}}
   {{#if options.useDeceptionToPlay}}
     <div {{action options.playVideo}} class="loading-diversion-overlay">
     </div>
   {{/if}}
 {{/video-player}}
+
+<div class="video-slogan {{if videoHasPlayed 'is-visible' ''}}">
+  <h2 class="video-slogan-text">{{model.slogan}}</h2>
+</div>
 
 <div class="lets-talk-about-this">
   <div class="words">

@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { run } from '@ember/runloop';
 import config from 'latlmes/config/environment';
+import { task, waitForEvent, waitForQueue, waitForProperty, timeout } from 'ember-concurrency';
 
 export default Component.extend({
   classNames: ['video-player'],
@@ -30,45 +31,67 @@ export default Component.extend({
     });
   },
 
-  forceInitialPlay() {
-    if (this.get('ytPlayer')) {
+  forceInitialPlay: task(function * () {
+    yield waitForProperty(this, 'ytPlayer', v => !!v);
+    this.set('ytPlayer.playerVars', this.get('playerVars'));
+    yield waitForProperty(this, 'ytPlayer.playerState', v => v === 'ready');
+    yield timeout(200);
+    this.get('ytPlayer').send('seekTo', this.get('startSeconds'));
+    yield waitForProperty(this, 'ytPlayer.playerState', v => v === 'playing');
+
+    if (!this.get('isMobileDevice')) {
+      // mobile restrictions are strict
+      yield this.get('tryUnmuting').perform();
+    }
+    this.get('onPlay')(true);
+  }).on('didInsertElement'),
+
+  tryUnmuting: task(function * () {
+    yield timeout(500)
+    this.get('ytPlayer').send('unMute');
+    yield timeout(200);
+    if (this.get('ytPlayer.playerState') === 'playing') {
+      this.set('playingUnmuted', true);
+    }
+    else {
+      this.get('ytPlayer').send('mute');
+      this.get('ytPlayer').send('play');
       this.set('ytPlayer.playerVars', this.get('playerVars'));
     }
-  },
+  }),
 
-  didReceiveAttrs() {
-    if (this.get('startSeconds')) {
-      this.set('playerVars.start', this.get('startSeconds') || 0);
-    }
-  },
+  // getCurrentTime: task(function * () {
+  //   yield waitForProperty(this, 'ytPlayer.player', v => !!v);
+  //   return this.get('ytPlayer.player').getCurrentTime();
+  // }),
 
-  didRender() {
-    run.schedule('afterRender', () => this.forceInitialPlay());
-  },
+  // isActuallyPlaying: task(function * () {
+  //   let firstTime = yield this.get('getCurrentTime').perform();
+  //   yield timeout(1000);
+  //   let secondTime = yield this.get('getCurrentTime').perform();
+  //   return firstTime === secondTime;
+  // }).drop(),
+  //
+  // pollForChanges: task(function * () {
+  //   while(true) {
+  //     yield this.get('isActuallyPlaying').perform();
+  //     yield timeout(500);
+  //   }
+  // }).on('didInsertElement'),
+  //
+  // didReceiveAttrs() {
+  //   if (this.get('startSeconds')) {
+  //     this.set('playerVars.start', this.get('startSeconds') || 0);
+  //   }
+  // },
 
   actions: {
     triggerPlay() {
-      this.forceInitialPlay();
+      this.get('ytPlayer').send('unMute');
+      this.get('ytPlayer').send('play');
+      this.set('playingUnmuted', true);
     },
     ytPlaying() {
-      if (!this.get('hasPlayed')) {
-        this.get('ytPlayer').send('seekTo', this.get('playerVars.start'));
-
-        run.next(() => {
-          this.set('firstTime', this.get('ytPlayer.player').getCurrentTime());
-          run.later(() => {
-            let nextTime = this.get('ytPlayer.player').getCurrentTime();
-            if (this.get('firstTime') !== nextTime) {
-              this.set('hasPlayed', true);
-              run.next(() => this.get('ytPlayer').send('unMute'));
-            }
-          }, 500)
-        })
-
-      }
-      if (config.environment === 'development') {
-        // this.get('ytPlayer').send('mute');
-      }
 
     },
     ytEnded() {

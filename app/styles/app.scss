@@ -35,32 +35,32 @@ a {
 }
 
 .site-header {
-  padding: 30px 0 0;
+  padding: 20px 0 0;
   text-align: center;
 
   @include media($medium-screen-up) {
-    padding: 30px 0 10px;
+    padding: 20px 0 10px;
   }
+
 }
 
 .site-header.small {
-  padding: 30px 0;
+  padding: 10px 0;
 }
 
-.site-header.small .site-header-title {
+.site-header.small .site-header-title-text {
   background-size: 200px auto !important;
   background: transparent url(/assets/images/logo-header.png)
     no-repeat center 20px;
-  min-height: 80px;
+  min-height: 60px;
   min-width: 230px;
 }
 
-.site-header.small .site-header-slogan {
-  display: block;
+.site-header-title {
+  display: inline-block
 }
 
-
-.site-header-title {
+.site-header-title-text {
   min-height: 80px;
   background: transparent url(/assets/images/logo-header.png)
     no-repeat center 20px;
@@ -76,15 +76,25 @@ a {
   }
 }
 
-.site-header-slogan {
-  display: inline-block;
-  display: none;
-  margin-top: -15px;
+.video-slogan-text {
+  display: block;
+  text-align: center;
   font-size: 16px;
   font-family: "Open Sans";
   font-weight: bold;
   text-transform: uppercase;
   color: $action-color;
+  min-height: 80px;
+}
+
+.video-slogan {
+  opacity: 0;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.video-slogan.is-visible {
+  opacity: 1;
 }
 
 .site-instructions {
@@ -334,7 +344,7 @@ a {
   color: $action-color;
 }
 
-label.field-label {
+.field-label {
   @include media($medium-screen-up) {
     display: none;
   }
@@ -448,6 +458,25 @@ label.field-label {
   position: relative;
   display: block;
   overflow: hidden;
+}
+
+.unmute-and-play-video {
+  background-color: #111;
+  opacity: 0.9;
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: absolute;
+  left: 10px;
+  bottom: 40px;
+  cursor: pointer;
+  border-radius: 0;
+  padding: 10px;
+
+  &:hover {
+    background-color: #FFF;
+    color: #000;
+  }
 }
 
 .video-player-embed {
