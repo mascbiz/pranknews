@@ -1,8 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { run } from '@ember/runloop';
-import config from 'latlmes/config/environment';
-import { task, waitForEvent, waitForQueue, waitForProperty, timeout } from 'ember-concurrency';
+import { task, waitForProperty, timeout } from 'ember-concurrency';
 
 export default Component.extend({
   classNames: ['video-player'],
