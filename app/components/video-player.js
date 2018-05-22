@@ -7,8 +7,7 @@ import { task, waitForEvent, waitForQueue, waitForProperty, timeout } from 'embe
 export default Component.extend({
   classNames: ['video-player'],
   attributeBindings: ['ytid:data-ytid'],
-  classNameBindings: ['hasPlayed', 'isMobileDevice', 'useDeceptionToPlay:is-deceptive'],
-  useDeceptionToPlay: false,
+  classNameBindings: ['hasPlayed', 'isMobileDevice', 'useDeceptionToPlay:is-deceptive', 'isReady'],
 
   isMobileDevice: computed({
     get() {
@@ -27,7 +26,7 @@ export default Component.extend({
       playsinline: 1,
       modestbranding: 1,
       rel: 0,
-      mute: 1,
+      mute: 1
     });
   },
 
@@ -35,6 +34,7 @@ export default Component.extend({
     yield waitForProperty(this, 'ytPlayer', v => !!v);
     this.set('ytPlayer.playerVars', this.get('playerVars'));
     yield waitForProperty(this, 'ytPlayer.playerState', v => v === 'ready');
+    this.set('isReady', true)
     yield timeout(200);
     this.get('ytPlayer').send('seekTo', this.get('startSeconds'));
     yield waitForProperty(this, 'ytPlayer.playerState', v => v === 'playing');
@@ -59,31 +59,6 @@ export default Component.extend({
       this.set('ytPlayer.playerVars', this.get('playerVars'));
     }
   }),
-
-  // getCurrentTime: task(function * () {
-  //   yield waitForProperty(this, 'ytPlayer.player', v => !!v);
-  //   return this.get('ytPlayer.player').getCurrentTime();
-  // }),
-
-  // isActuallyPlaying: task(function * () {
-  //   let firstTime = yield this.get('getCurrentTime').perform();
-  //   yield timeout(1000);
-  //   let secondTime = yield this.get('getCurrentTime').perform();
-  //   return firstTime === secondTime;
-  // }).drop(),
-  //
-  // pollForChanges: task(function * () {
-  //   while(true) {
-  //     yield this.get('isActuallyPlaying').perform();
-  //     yield timeout(500);
-  //   }
-  // }).on('didInsertElement'),
-  //
-  // didReceiveAttrs() {
-  //   if (this.get('startSeconds')) {
-  //     this.set('playerVars.start', this.get('startSeconds') || 0);
-  //   }
-  // },
 
   actions: {
     triggerPlay() {

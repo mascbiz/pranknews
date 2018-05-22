@@ -17,9 +17,9 @@
     buffering="ytBuffering"
   }}
 
-  {{#unless playingUnmuted}}
+  {{#unless (and isReady playingUnmuted)}}
     <button class="unmute-and-play-video" {{action 'triggerPlay'}}>Unmute Video</button>
   {{/unless}}
 </div>
 
-{{yield (hash useDeceptionToPlay=useDeceptionToPlay playVideo=(action 'triggerPlay'))}}
+{{yield (hash playVideo=(action 'triggerPlay'))}}

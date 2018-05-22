@@ -1,9 +1,6 @@
 {{site-header type="small"}}
 {{#video-player ytid=model.ytid giphyId=model.giphyId startSeconds=model.startSeconds onPlay=(action (mut videoHasPlayed)) as |options|}}
-  {{#if options.useDeceptionToPlay}}
-    <div {{action options.playVideo}} class="loading-diversion-overlay">
-    </div>
-  {{/if}}
+
 {{/video-player}}
 
 <div class="video-slogan {{if videoHasPlayed 'is-visible' ''}}">
