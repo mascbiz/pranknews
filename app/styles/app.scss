@@ -1,3 +1,5 @@
+/* Honestly I'm ashamed of what follows. This is a hackjob. */
+
 @import "bourbon";
 @import "neat/neat";
 @import "base/base";
@@ -535,6 +537,51 @@ a {
     right: 0;
     bottom: 0;
     z-index: 0;
+  }
+}
+
+
+.support-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  width: 75%;
+  font-size: 14px;
+  color: #aaa;
+  @include media($medium-screen-up) {
+    margin: 40px auto 60px;
+  }
+
+  form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+
+  }
+}
+
+.follow-me {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
+  margin: 40px auto 20px;
+  width: 75%;
+  font-size: 14px;
+  color: #aaa;
+  @include media($medium-screen-up) {
+    margin: 40px auto 60px;
+  }
+
+  iframe {
+    margin-left: 8px;
+    margin-bottom: 2px;
   }
 }
 
