@@ -65,9 +65,9 @@ export default {
     {
       id: 4,
       name: "Snow",
-      url: "https://www.youtube.com/embed/StlMdNcvCJo?autoplay=true&start=12&iv_load_policy=3",
+      url: "https://www.youtube.com/embed/TSffz_bl6zo?autoplay=true&t=12s&iv_load_policy=3",
       startSeconds: 12,
-      ytid: "StlMdNcvCJo",
+      ytid: "TSffz_bl6zo",
       imageName: "snow.jpg",
       slogan: "You just got informed!",
       front: false
