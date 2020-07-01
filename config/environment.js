@@ -33,7 +33,15 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'font-src': "'self' fonts.gstatic.com",
       'style-src': "'self' fonts.googleapis.com"
-    }
+    },
+    metricsAdapters: [{
+      name: 'Piwik',
+      environments: ['production'],
+      config: {
+        piwikUrl: 'https://analytics.latlmes.com',
+        siteId: 2
+      }
+    }]
   };
 
   if (environment === 'development') {
