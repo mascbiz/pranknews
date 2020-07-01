@@ -8,6 +8,8 @@ export default Route.extend({
   isFastBoot: reads('fastboot.isFastBoot'),
 
   init() {
+    this._super(...arguments);
+
     let router = this.router;
     router.on('routeDidChange', () => {
       const page = router.currentURL;
@@ -15,8 +17,6 @@ export default Route.extend({
 
       this.metrics.trackPage({ page, title });
     });
-
-    this._super(...arguments);
   },
 
 });
